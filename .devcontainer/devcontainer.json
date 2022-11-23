@@ -1,43 +1,23 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/powershell
 {
-	"name": "Azure, Bicep and PowerShell",
-	"image": "mcr.microsoft.com/powershell:lts-debian-11",
-	"features": {
-		"ghcr.io/devcontainers/features/common-utils:1": {
-			"installZsh": "true",
-			"username": "vscode",
-			"uid": "1000",
-			"gid": "1000",
-			"upgradePackages": "false",
-			"installOhMyZsh": "true",
-			"nonFreePackages": "true"
-		}
-	},
+    "build": {
+        "dockerfile": "./Dockerfile",
+        "context": "."
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:1": {
+            "installZsh": "true",
+            "username": "vscode",
+            "uid": "1000",
+            "gid": "1000",
+            "upgradePackages": "true"
+        }
+    },
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
 
-	"postCreateCommand": "sudo chsh vscode -s \"$(which pwsh)\"",
+    // Use 'postCreateCommand' to run commands after the container is created.
+    // "postCreateCommand": "uname -a",
 
-	// Configure tool-specific properties.
-	"customizations": {
-		// Configure properties specific to VS Code.
-		"vscode": {
-			// Set *default* container specific settings.json values on container create.
-			"settings": { 
-				"terminal.integrated.defaultProfile.linux": "pwsh"
-			},
-			
-			// Add the IDs of extensions you want installed when the container is created.
-			"extensions": [
-				"ms-vscode.powershell",
-				"ms-vscode.vscode-node-azure-pack",
-				"ms-vscode.azure-account"
-			]
-		}
-	}
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+    // Set `remoteUser` to `root` to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+    "remoteUser": "vscode"
 }
