@@ -1,0 +1,31 @@
+{
+	"name": "Azure and Bicep Dev environment",
+	"dockerFile": "Dockerfile",
+	"runArgs": ["--privileged"],
+	"mounts": [],
+	"overrideCommand": false,
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"ms-vscode.vscode-node-azure-pack",
+				"ms-vscode.azurecli"
+			]
+		}
+	},
+
+	//Use 'forwardPorts' to make a list of ports inside the container available locally.
+	//"forwardPorts": [3000, 3001],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "kubectl version",
+
+	// Use 'postStartCommand' to run commands after the container is created like starting minikube.
+	// "postStartCommand": "nohup bash -c 'minikube start &' > minikube.log 2>&1",
+
+	// Minikube does not like running as root, so use a non-root user.
+	"remoteUser": "vscode"
+}
